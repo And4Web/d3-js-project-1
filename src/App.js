@@ -32,6 +32,14 @@ function App() {
     svg.append("g").call(yAxis);
 
     //4.setting the svg data
+    svg
+      .selectAll(".bar")
+      .data(data)
+      .join("rect")
+      .attr("x", (value, index) => xScale(index))
+      .attr("y", yScale)
+      .attr("width", xScale.bandwidth())
+      .attr("height", (value) => height - yScale(value));
   }, [data]);
 
   return (
