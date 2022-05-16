@@ -17,6 +17,13 @@ function App() {
       .style("overflow", "visible")
       .style("margin-top", "75px");
     //2.setting the scaling
+    const xScale = d3
+      .scaleBand()
+      .domain(data.map((value, index) => index))
+      .range([0, width])
+      .padding(0.5);
+    const yScale = d3.scaleLinear().domain([0, height]).range([height, 0]);
+
     //3.setting the axes
     //4.setting the svg data
   }, [data]);
@@ -24,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <h1>D3.js project</h1>
+      <svg ref={svgRef}></svg>
     </div>
   );
 }
