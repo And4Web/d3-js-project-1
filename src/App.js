@@ -25,12 +25,18 @@ function App() {
     const yScale = d3.scaleLinear().domain([0, height]).range([height, 0]);
 
     //3.setting the axes
+    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+    const yAxis = d3.axisLeft(yScale).ticks(5);
+
+    svg.append("g").call(xAxis).attr("transform", `translate(0, ${height})`);
+    svg.append("g").call(yAxis);
+
     //4.setting the svg data
   }, [data]);
 
   return (
     <div className="App">
-      <h1>D3.js project</h1>
+      <h1>D3.js project in 4 steps:</h1>
       <svg ref={svgRef}></svg>
     </div>
   );
